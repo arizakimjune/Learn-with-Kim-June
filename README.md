@@ -1,2 +1,2 @@
-# myweb
-my first website
+# Learn with Kim June
+Professional Civil Service Exam Passer
