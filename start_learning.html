@@ -1,64 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Learning - Kim June Ariza</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f0f4ff, #dce6f7);
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #333;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Learning</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f9f9f9;
+        transition: margin-left 0.3s;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 200;
+        top: 0;
+        left: 0;
+        background-color: #2c3e50;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .sidebar a, .sidebar .dropdown-btn {
+        display: block;
+        padding: 15px 25px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar .dropdown-btn:hover {
+        background-color: #34495e;
+    }
+
+    .sidebar .dropdown-container {
+        display: none;
+        background-color: #34495e;
+    }
+
+    .sidebar .dropdown-container a {
+        padding-left: 40px;
+        font-weight: normal;
+    }
+
+    /* Overlay effect */
+    .overlay {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+        z-index: 100;
+        transition: 0.3s;
+    }
+
+    /* Menu button */
+    .menu-btn {
+        font-size: 25px;
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 300;
+        border-radius: 5px;
+    }
+
+    /* Sections */
+    section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+        transition: margin-left 0.3s;
+    }
+
+    section:nth-child(even) {
+        background-color: #f0f0f0;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    p {
+        text-align: center;
+        color: #555;
+    }
+
+    /* Development notice */
+    .notice {
+        background-color: #fffae6;
+        color: #a67c00;
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #ffd54f;
+        margin-bottom: 20px;
+        font-weight: bold;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+        section {
+            padding: 50px 15px;
         }
-        h1 {
-            font-size: 2.5rem;
-            color: #2a4d8f;
-            margin-bottom: 10px;
+        .menu-btn {
+            padding: 8px 15px;
+            font-size: 20px;
         }
-        p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .notice {
-            background-color: #fff3cd;
-            padding: 15px 25px;
-            border-radius: 8px;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        a {
-            text-decoration: none;
-            background-color: #2a4d8f;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        a:hover {
-            background-color: #1e3670;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <h1>Start Learning</h1>
-    <div class="notice">🚧 This page is still in development</div>
-    <p>
-        We’re preparing valuable Civil Service Exam tips and lessons for Numerical Reasoning.
-        Please check back soon — exciting content is on the way!
-    </p>
-    <a href="index.html">← Back to Home</a>
+
+<!-- Menu button -->
+<button class="menu-btn" onclick="openSidebar()">☰ Menu</button>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" onclick="closeSidebar()">✖ Close</a>
+    <a href="#intro">Introduction</a>
+    <a href="#tips">Tips</a>
+    <div class="dropdown-btn">Lessons ▼</div>
+    <div class="dropdown-container">
+        <a href="#lesson1">Lesson 1</a>
+        <a href="#lesson2">Lesson 2</a>
+        <a href="#lesson3">Lesson 3</a>
+    </div>
+    <a href="#practice">Practice</a>
+    <a href="#answer_key">Answer Key</a>
+    <a href="#resources">Resources</a>
+</div>
+
+<!-- Development Notice -->
+<div class="notice">🚧 This page is in development / not final 🚧</div>
+
+<!-- Sections -->
+<section id="intro">
+    <h2>Introduction</h2>
+    <p>Welcome to the learning page! Here we will guide you through each topic step-by-step.</p>
+</section>
+
+<section id="tips">
+    <h2>Tips</h2>
+    <p>This will be the sectioin for the tips.</p>
+</section>
+
+<section id="lesson1">
+    <h2>Lesson 1</h2>
+    <p>This is the first lesson.</p>
+</section>
+
+<section id="lesson2">
+    <h2>Lesson 2</h2>
+    <p>This is the second lesson.</p>
+</section>
+
+<section id="lesson3">
+    <h2>Lesson 3</h2>
+    <p>This is the third lesson.</p>
+</section>
+
+<section id="practice">
+    <h2>Practice</h2>
+    <p>Practice problems and exercises will be available here to test your understanding.</p>
+</section>
+
+<section id="answer_key">
+    <h2>Answer Key</h2>
+    <p>Check your answers.</p>
+</section>
+
+<section id="resources">
+    <h2>Resources</h2>
+    <p>Additional reading materials, videos, and references will be listed here.</p>
+</section>
+
+<script>
+    function openSidebar() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    // Dropdown functionality
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    for (let i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            var container = this.nextElementSibling;
+            container.style.display = container.style.display === "block" ? "none" : "block";
+        });
+    }
+</script>
+
 </body>
 </html>
