@@ -12,28 +12,55 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start Learning</title>
+<title>Start Learning - The Mastery Equation</title>
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
-        background-color: #f9f9f9;
-        transition: margin-left 0.3s;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Header */
+    .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header h1 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.8rem;
+        font-weight: 700;
     }
 
     /* Sidebar */
     .sidebar {
-        height: 100%;
+        height: 100vh;
         width: 0;
         position: fixed;
-        z-index: 200;
+        z-index: 2000;
         top: 0;
         left: 0;
-        background-color: #2c3e50;
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
         overflow-x: hidden;
-        transition: 0.3s;
-        padding-top: 60px;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        transition: 0.3s ease-in-out;
+        padding-top: 80px;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
     }
 
     .sidebar a, .sidebar .dropdown-btn {
@@ -41,23 +68,38 @@
         padding: 15px 25px;
         text-decoration: none;
         color: white;
-        font-weight: bold;
+        font-weight: 500;
         cursor: pointer;
-        transition: 0.3s;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+        position: relative;
     }
 
     .sidebar a:hover, .sidebar .dropdown-btn:hover {
-        background-color: #34495e;
+        background: rgba(255,255,255,0.1);
+        border-left-color: #3498db;
+        transform: translateX(5px);
     }
 
     .sidebar .dropdown-container {
         display: none;
-        background-color: #34495e;
+        background: rgba(0,0,0,0.2);
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .sidebar .dropdown-container a {
-        padding-left: 40px;
-        font-weight: normal;
+        padding-left: 50px;
+        font-weight: 400;
+        font-size: 0.95rem;
+    }
+
+    .sidebar .dropdown-container a:hover {
+        background: rgba(52, 152, 219, 0.3);
     }
 
     /* Overlay effect */
@@ -68,92 +110,305 @@
         left: 0;
         height: 100%;
         width: 100%;
-        background: rgba(0,0,0,0.4);
-        z-index: 100;
+        background: rgba(0,0,0,0.5);
+        z-index: 1500;
         transition: 0.3s;
+        backdrop-filter: blur(3px);
     }
 
     /* Menu button */
     .menu-btn {
-        font-size: 25px;
+        font-size: 1.5rem;
         cursor: pointer;
-        padding: 10px 20px;
-        background-color: #2c3e50;
+        padding: 12px 20px;
+        background: linear-gradient(135deg, #3498db, #2980b9);
         color: white;
         border: none;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 300;
-        border-radius: 5px;
+        border-radius: 8px;
+        position: relative;
+        z-index: 3000;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .menu-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    /* Main content */
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 
     /* Sections */
     section {
-        padding: 60px 20px;
-        max-width: 1000px;
-        margin: auto;
-        transition: margin-left 0.3s;
+        padding: 3rem 2rem;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     section:nth-child(even) {
-        background-color: #f0f0f0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     }
 
     h2 {
         text-align: center;
-        margin-bottom: 20px;
-        font-size: 28px;
+        margin-bottom: 2rem;
+        font-size: 2.2rem;
+        color: #2c3e50;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #3498db, #2980b9);
+        border-radius: 2px;
     }
 
     p {
-        text-align: center;
         color: #555;
+        font-size: 1.1rem;
+        line-height: 1.8;
     }
 
     .paragraphs {
         text-align: left;
-        margin: 1.8rem;
+        margin: 1.5rem 0;
+        padding: 0 1rem;
+    }
+
+    .paragraphs strong {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    /* Development notice */
+    .notice {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        color: #856404;
+        text-align: center;
+        padding: 1.5rem;
+        border: 2px solid #ffc107;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+        100% { transform: scale(1); }
+    }
+
+    .icons {
+        width: 45px;
+        height: 45px;
+        margin-right: 15px;
+        vertical-align: middle;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    /* Contact section styling */
+    .contact-info {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 5px solid #2196f3;
+    }
+
+    .contact-info h3 {
+        color: #1976d2;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    /* Support section */
+    .support-section {
+        background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        text-align: center;
+        border-left: 5px solid #9c27b0;
     }
 
     .gcash {
         text-align: center;
-    }
-    /* Development notice */
-    .notice {
-        background-color: #fffae6;
-        color: #a67c00;
-        text-align: center;
-        padding: 15px;
-        border: 1px solid #ffd54f;
-        margin-bottom: 20px;
-        font-weight: bold;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .icons {
-        width: 40px;
-        aspect-ratio: 1;
-        margin-bottom: -8px;
-        margin-right: 10px;
+        margin: 2rem 0;
     }
 
+    .gcash img {
+        width: 250px;
+        height: auto;
+        border: 3px solid #ddd;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+
+    .gcash img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Tips styling */
+    .tip-card {
+        background: white;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 10px;
+        border-left: 5px solid #27ae60;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .tip-card:hover {
+        transform: translateX(10px);
+    }
+
+    .tip-card strong {
+        color: #27ae60;
+        font-size: 1.2rem;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: none;
+    }
+
+    .scroll-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(52, 152, 219, 0.6);
+    }
+
+    /* Progress indicator */
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #3498db, #2980b9);
+        z-index: 2000;
+        transition: width 0.3s ease;
+    }
+
+    /* Responsive design */
     @media screen and (max-width: 768px) {
-        section {
-            padding: 50px 15px;
+        .header {
+            padding: 1rem;
         }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .main-content {
+            margin: 1rem;
+            padding: 1rem;
+        }
+
+        section {
+            padding: 2rem 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
         .menu-btn {
-            padding: 8px 15px;
-            font-size: 20px;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+        }
+
+        .gcash img {
+            width: 200px;
+        }
+
+        .scroll-top {
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .main-content {
+            margin: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        section {
+            padding: 1.5rem 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .paragraphs {
+            padding: 0 0.5rem;
         }
     }
 </style>
 </head>
 <body>
 
-<!-- Menu button -->
-<button class="menu-btn" onclick="openSidebar()">☰ Menu</button>
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Header -->
+<div class="header">
+    <h1>🎯 The Mastery Equation</h1>
+    <button class="menu-btn" onclick="openSidebar()">☰ Menu</button>
+</div>
 
 <!-- Overlay -->
 <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
@@ -161,137 +416,166 @@
 <!-- Sidebar -->
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" onclick="closeSidebar()">✖ Close</a>
-    <a href="#start">Getting Started</a>
-    <a href="#tips">Tips</a>
-    <div class="dropdown-btn">Lessons ▼</div>
+    <a href="#start" onclick="closeSidebar()">🚀 Getting Started</a>
+    <a href="#tips" onclick="closeSidebar()">💡 Tips & Strategies</a>
+    <div class="dropdown-btn">📚 Lessons ▼</div>
     <div class="dropdown-container">
-        <a href="#lesson1">Lesson 1</a>
-        <a href="#lesson2">Lesson 2</a>
-        <a href="#lesson3">Lesson 3</a>
+        <a href="#lesson1" onclick="closeSidebar()">📖 Lesson 1</a>
+        <a href="#lesson2" onclick="closeSidebar()">📖 Lesson 2</a>
+        <a href="#lesson3" onclick="closeSidebar()">📖 Lesson 3</a>
     </div>
-    <a href="#practice">Practice</a>
-    <a href="#answer_key">Answer Key</a>
-    <a href="#resources">Resources</a>
+    <a href="#practice" onclick="closeSidebar()">✏️ Practice</a>
+    <a href="#answer_key" onclick="closeSidebar()">✅ Answer Key</a>
+    <a href="#resources" onclick="closeSidebar()">📋 Resources</a>
 </div>
 
-<!-- Development Notice -->
-<div class="notice">🚧 This page is currently under development and may be subject to changes 🚧<br>🚧 Your feedback and suggestions are welcome 🚧</div>
-
-<!-- Sections -->
-<section id="start">
-    <h2><img src="icons/getting_started.png" alt="getting started logo" class="icons">Getting Started</h2>
-
-    <p class="paragraphs"><strong>Welcome to The Mastery Equation!</strong></p>
-
-    <p class="paragraphs">This website is dedicated to helping Civil Service exam takers, especially those aiming to master Numerical Reasoning.</p>
-
-    <p class="paragraphs"> Here, you’ll find step-by-step lessons, practical strategies, and targeted exercises designed to build your confidence and accuracy in solving numerical problems.</p>
-
-    <p class="paragraphs">Whether you’re just starting your review or refining your test-taking skills, the goal of this platform is to provide clear, concise, and effective learning resources that can help you achieve your best possible score.</p>
-
-    <p class="paragraphs">The content is carefully structured to mirror the real exam style — ensuring your preparation is both focused and
-     realistic.</p>
-
-    <p class="paragraphs"><strong>About Me</strong></p>
-
-    <p class="paragraphs">In March 2025, I successfully passed the Professional Civil Service Examination, earning a general rating of 92.89 and a remarkable 98.95 in Numerical Reasoning.</p>
-
-    <p class="paragraphs">My journey taught me the value of smart preparation, consistency, and effective study strategies — lessons I now share through this website.</p>
-
-    <p class="paragraphs">I created this platform to help others overcome exam anxiety, master difficult topics, and approach the Civil Service Exam with confidence.</p>
-
-    <p class="paragraphs">Here, I share my personal techniques, study schedules, and strategies that helped me achieve my score — so you can adapt them to your own learning style.</p>
-
-    <p class="paragraphs"><strong>Contact Me</strong></p>
-
-    <p class="paragraphs">Email: arizakimjune.evsudc@gmail.com</p>
-
-    <p class="paragraphs"><strong>Support This Website</strong></p>
-    <p class="paragraphs">Keeping this platform updated and filled with high-quality resources takes time and effort. If you’d like to help sustain it, you can support through:</p>
-
-    <p class="paragraphs">Gcash Number: 09709246228</p>
-    <div class="gcash">
-        <a href="gcash-qr.jpg" target="_blank">
-        <img src="gcash-qr.jpg" alt="GCash QR Code" style="width:200px; height:auto; border:2px solid #ccc; border-radius:10px;"></a>
-        <p class="paragraphs">Scan this QR code using your GCash app to send your donation.</p>
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Development Notice -->
+    <div class="notice">
+        🚧 This page is currently under development and may be subject to changes 🚧<br>
+        🚧 Your feedback and suggestions are welcome 🚧
     </div>
 
-</section>
+    <!-- Sections -->
+    <section id="start">
+        <h2><img src="icons/getting_started.png" alt="getting started logo" class="icons">Getting Started</h2>
 
-<section id="tips">
-    <h2><img src="icons/tips.png" alt="tips" class="icons">Tips and Strategies</h2>
+        <p class="paragraphs"><strong>Welcome to The Mastery Equation!</strong></p>
 
-    <p class="paragraphs"><strong>Tip 1: Know the Exam Inside Out</strong></p>
-    <p class="paragraphs">Before you dive into preparation, understand the full scope of the Civil Service Exam—its parts, topic areas, number of items per section, and time constraints. Familiarity with the exam layout allows you to plan your review strategically and reduce surprises on test day.</p>
+        <p class="paragraphs">This website is dedicated to helping Civil Service exam takers, especially those aiming to master Numerical Reasoning.</p>
 
-    <p class="paragraphs"><strong>Tip 2: Identify Your Strengths and Weaknesses</strong></p>
-    <p class="paragraphs">Once you're clear about the structure, evaluate which topics you handle well and which ones trip you up. Prioritize your weaker areas first, but continue practicing your strengths to keep your overall performance balanced and confident.</p>
+        <p class="paragraphs">Here, you'll find step-by-step lessons, practical strategies, and targeted exercises designed to build your confidence and accuracy in solving numerical problems.</p>
 
-    <p class="paragraphs"><strong>Tip 3: Master Fast Basic Math</strong></p>
-    <p class="paragraphs">Strong numerical skills start with a solid foundation in basic operations — addition, subtraction, multiplication, and division. The Civil Service Exam is time-bound, so speed and accuracy are equally important.</p>
+        <p class="paragraphs">Whether you're just starting your review or refining your test-taking skills, the goal of this platform is to provide clear, concise, and effective learning resources that can help you achieve your best possible score.</p>
 
-    <p class="paragraphs"><strong>Tip 4: Learn Useful Shortcuts</strong></p>
-    <p class="paragraphs">After mastering the fundamentals, learn speed-enhancing strategies like mental math tricks, estimation techniques, and logical shortcuts. These methods help you arrive at correct answers faster and save valuable time during the exam.</p>
+        <p class="paragraphs">The content is carefully structured to mirror the real exam style — ensuring your preparation is both focused and realistic.</p>
 
-    <p class="paragraphs"><strong>Tip 5: Make Problem-Solving a Daily Habit</strong></p>
-    <p class="paragraphs">Success in numerical reasoning doesn't come from cramming—it grows through consistency. Solve problems regularly, 5-10 each day—to reinforce recall, sharpen logic, and reduce uncertainty under timed conditions.</p>
+        <div class="contact-info">
+            <h3>👨‍🎓 About Me</h3>
+            <p><strong>In March 2025, I successfully passed the Professional Civil Service Examination, earning a general rating of 92.89 and a remarkable 98.95 in Numerical Reasoning.</strong></p>
+            <p>My journey taught me the value of smart preparation, consistency, and effective study strategies — lessons I now share through this website.</p>
+            <p>I created this platform to help others overcome exam anxiety, master difficult topics, and approach the Civil Service Exam with confidence.</p>
+            <p>Here, I share my personal techniques, study schedules, and strategies that helped me achieve my score — so you can adapt them to your own learning style.</p>
+        </div>
 
-    <p class="paragraphs"><strong>Tip 6: Read Questions Carefully</strong></p>
-    <p class="paragraphs">Take a moment to fully understand what a question is asking before rushing in. Misreading key details can lead to avoidable mistakes.</p>
+        <div class="contact-info">
+            <h3>📧 Contact Me</h3>
+            <p><strong>Email:</strong> arizakimjune.evsudc@gmail.com</p>
+        </div>
 
-    <p class="paragraphs"><strong>Tip 7: Estimate to Narrow Down Options</strong></p>
-    <p class="paragraphs">In multiple-choice tests, close-enough is often enough. Estimate and eliminate obviously wrong choices to reach the right answer more quickly</p>
+        <div class="support-section">
+            <h3>💝 Support This Website</h3>
+            <p>Keeping this platform updated and filled with high-quality resources takes time and effort. If you'd like to help sustain it, you can support through:</p>
+            <p><strong>Gcash Number:</strong> 09709246228</p>
+            <div class="gcash">
+                <a href="images/gcash-qr.jpg" target="_blank">
+                    <img src="images/gcash-qr.jpg" alt="GCash QR Code">
+                </a>
+                <p class="paragraphs">Scan this QR code using your GCash app to send your donation.</p>
+            </div>
+        </div>
+    </section>
 
-    <p class="paragraphs"><strong>Tip 8: Time Management is Crucial</strong></p>
-    <p class="paragraphs">Know your pacing: for example, if you have 30 questions and 20 minutes, that’s less than a minute per question. Skip tough ones temporarily and revisit if time allows</p>
+    <section id="tips">
+        <h2><img src="icons/tips.png" alt="tips" class="icons">Tips and Strategies</h2>
 
-    <p class="paragraphs"><strong>Tip 9: Practice Mental Math and Data Interpretation</strong></p>
-    <p class="paragraphs">Spend time improving your mental math, especially with fractions, ratios, and data charts. Familiarity with charts and tables boosts speed and comprehension</p>
+        <div class="tip-card">
+            <p><strong>Tip 1: Know the Exam Inside Out</strong></p>
+            <p>Before you dive into preparation, understand the full scope of the Civil Service Exam—its parts, topic areas, number of items per section, and time constraints. Familiarity with the exam layout allows you to plan your review strategically and reduce surprises on test day.</p>
+        </div>
 
-    <p class="paragraphs"><strong>Tip 10: Practice, Practice, Practice</strong></p>
-    <p class="paragraphs">The Civil Service Exam demands more than just reading—you need consistent, hands-on practice to build speed, accuracy, and confidence. Work on all subject areas daily, starting with untimed sessions to focus on accuracy, then gradually adding time limits to mimic the real exam. The more you practice, the more natural problem-solving becomes, making you faster and more prepared on test day.</p>
+        <div class="tip-card">
+            <p><strong>Tip 2: Identify Your Strengths and Weaknesses</strong></p>
+            <p>Once you're clear about the structure, evaluate which topics you handle well and which ones trip you up. Prioritize your weaker areas first, but continue practicing your strengths to keep your overall performance balanced and confident.</p>
+        </div>
 
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 3: Master Fast Basic Math</strong></p>
+            <p>Strong numerical skills start with a solid foundation in basic operations — addition, subtraction, multiplication, and division. The Civil Service Exam is time-bound, so speed and accuracy are equally important.</p>
+        </div>
 
-<section id="lesson1">
-    <h2>Lesson 1</h2>
-    <p>This is the first lesson.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 4: Learn Useful Shortcuts</strong></p>
+            <p>After mastering the fundamentals, learn speed-enhancing strategies like mental math tricks, estimation techniques, and logical shortcuts. These methods help you arrive at correct answers faster and save valuable time during the exam.</p>
+        </div>
 
-<section id="lesson2">
-    <h2>Lesson 2</h2>
-    <p>This is the second lesson.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 5: Make Problem-Solving a Daily Habit</strong></p>
+            <p>Success in numerical reasoning doesn't come from cramming—it grows through consistency. Solve problems regularly, 5-10 each day—to reinforce recall, sharpen logic, and reduce uncertainty under timed conditions.</p>
+        </div>
 
-<section id="lesson3">
-    <h2>Lesson 3</h2>
-    <p>This is the third lesson.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 6: Read Questions Carefully</strong></p>
+            <p>Take a moment to fully understand what a question is asking before rushing in. Misreading key details can lead to avoidable mistakes.</p>
+        </div>
 
-<section id="practice">
-    <h2>Practice</h2>
-    <p>Practice problems and exercises will be available here to test your understanding.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 7: Estimate to Narrow Down Options</strong></p>
+            <p>In multiple-choice tests, close-enough is often enough. Estimate and eliminate obviously wrong choices to reach the right answer more quickly</p>
+        </div>
 
-<section id="answer_key">
-    <h2>Answer Key</h2>
-    <p>Check your answers.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 8: Time Management is Crucial</strong></p>
+            <p>Know your pacing: for example, if you have 30 questions and 20 minutes, that's less than a minute per question. Skip tough ones temporarily and revisit if time allows</p>
+        </div>
 
-<section id="resources">
-    <h2>Resources</h2>
-    <p>Additional reading materials, videos, and references will be listed here.</p>
-</section>
+        <div class="tip-card">
+            <p><strong>Tip 9: Practice Mental Math and Data Interpretation</strong></p>
+            <p>Spend time improving your mental math, especially with fractions, ratios, and data charts. Familiarity with charts and tables boosts speed and comprehension</p>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Tip 10: Practice, Practice, Practice</strong></p>
+            <p>The Civil Service Exam demands more than just reading—you need consistent, hands-on practice to build speed, accuracy, and confidence. Work on all subject areas daily, starting with untimed sessions to focus on accuracy, then gradually adding time limits to mimic the real exam. The more you practice, the more natural problem-solving becomes, making you faster and more prepared on test day.</p>
+        </div>
+    </section>
+
+    <section id="lesson1">
+        <h2>📖 Lesson 1</h2>
+        <p>This is the first lesson.</p>
+    </section>
+
+    <section id="lesson2">
+        <h2>📖 Lesson 2</h2>
+        <p>This is the second lesson.</p>
+    </section>
+
+    <section id="lesson3">
+        <h2>📖 Lesson 3</h2>
+        <p>This is the third lesson.</p>
+    </section>
+
+    <section id="practice">
+        <h2>✏️ Practice</h2>
+        <p>Practice problems and exercises will be available here to test your understanding.</p>
+    </section>
+
+    <section id="answer_key">
+        <h2>✅ Answer Key</h2>
+        <p>Check your answers.</p>
+    </section>
+
+    <section id="resources">
+        <h2>📋 Resources</h2>
+        <p>Additional reading materials, videos, and references will be listed here.</p>
+    </section>
+</div>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" onclick="scrollToTop()" id="scrollTopBtn">↑</button>
 
 <script>
     function openSidebar() {
-        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("mySidebar").style.width = "280px";
         document.getElementById("overlay").style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 
     function closeSidebar() {
         document.getElementById("mySidebar").style.width = "0";
         document.getElementById("overlay").style.display = "none";
+        document.body.style.overflow = "auto";
     }
 
     // Dropdown functionality
@@ -302,6 +586,53 @@
             container.style.display = container.style.display === "block" ? "none" : "block";
         });
     }
+
+    // Scroll to top functionality
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Show/hide scroll to top button
+    window.onscroll = function() {
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+
+        // Update progress bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+    };
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', function() {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease-in';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+    });
 </script>
 
 </body>
