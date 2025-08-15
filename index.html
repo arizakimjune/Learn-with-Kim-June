@@ -101,6 +101,30 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: glow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo:hover {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
         }
 
         @keyframes glow {
@@ -326,6 +350,11 @@
                 font-size: 2.5rem;
             }
 
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
             .subtitle {
                 font-size: 1.2rem;
             }
@@ -369,6 +398,11 @@
         @media screen and (max-width: 480px) {
             .main-title {
                 font-size: 2rem;
+            }
+
+            .logo {
+                width: 45px;
+                height: 45px;
             }
 
             .subtitle {
@@ -419,7 +453,7 @@
     <div class="main-container">
         <!-- Header section -->
         <div class="header-section">
-            <h1 class="main-title">🎯 The Mastery Equation</h1>
+            <h1 class="main-title"><img src="icons/logo.png" alt="logo" class="logo"> The Mastery Equation</h1>
             <h3 class="subtitle">Coaching You Through Numbers for Civil Service Success</h3>
         </div>
 

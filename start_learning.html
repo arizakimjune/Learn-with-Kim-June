@@ -46,6 +46,23 @@
         color: #2c3e50;
         font-size: 1.8rem;
         font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .logo:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     /* Sidebar */
@@ -348,6 +365,11 @@
             font-size: 1.5rem;
         }
 
+        .logo {
+            width: 45px;
+            height: 45px;
+        }
+
         .main-content {
             margin: 1rem;
             padding: 1rem;
@@ -396,6 +418,11 @@
         .paragraphs {
             padding: 0 0.5rem;
         }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
     }
 </style>
 </head>
@@ -406,7 +433,7 @@
 
 <!-- Header -->
 <div class="header">
-    <h1>🎯 The Mastery Equation</h1>
+    <h1><img src="icons/logo.png" alt="logo" class="logo"> The Mastery Equation</h1>
     <button class="menu-btn" onclick="openSidebar()">☰ Menu</button>
 </div>
 
