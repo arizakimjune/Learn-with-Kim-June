@@ -12,419 +12,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
 <title>Start Learning - The Mastery Equation</title>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        line-height: 1.6;
-        color: #333;
-    }
-
-    /* Header */
-    .header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 2rem;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header h1 {
-        margin: 0;
-        color: #2c3e50;
-        font-size: 1.8rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .logo {
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        transition: all 0.3s ease;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    }
-
-    .logo:hover {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    /* Sidebar */
-    .sidebar {
-        height: 100vh;
-        width: 0;
-        position: fixed;
-        z-index: 2000;
-        top: 0;
-        left: 0;
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-        overflow-x: hidden;
-        transition: 0.3s ease-in-out;
-        padding-top: 80px;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
-    }
-
-    .sidebar a, .sidebar .dropdown-btn {
-        display: block;
-        padding: 15px 25px;
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
-        position: relative;
-    }
-
-    .sidebar a:hover, .sidebar .dropdown-btn:hover {
-        background: rgba(255,255,255,0.1);
-        border-left-color: #3498db;
-        transform: translateX(5px);
-    }
-
-    .sidebar .dropdown-container {
-        display: none;
-        background: rgba(0,0,0,0.2);
-        animation: slideDown 0.3s ease;
-    }
-
-    @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .sidebar .dropdown-container a {
-        padding-left: 50px;
-        font-weight: 400;
-        font-size: 0.95rem;
-    }
-
-    .sidebar .dropdown-container a:hover {
-        background: rgba(52, 152, 219, 0.3);
-    }
-
-    /* Overlay effect */
-    .overlay {
-        position: fixed;
-        display: none;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 1500;
-        transition: 0.3s;
-        backdrop-filter: blur(3px);
-    }
-
-    /* Menu button */
-    .menu-btn {
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 12px 20px;
-        background: linear-gradient(135deg, #3498db, #2980b9);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        position: relative;
-        z-index: 3000;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-    }
-
-    .menu-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-    }
-
-    /* Main content */
-    .main-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    /* Sections */
-    section {
-        padding: 3rem 2rem;
-        margin-bottom: 2rem;
-        border-radius: 15px;
-        background: white;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-
-    section:nth-child(even) {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.2rem;
-        color: #2c3e50;
-        font-weight: 700;
-        position: relative;
-        padding-bottom: 1rem;
-    }
-
-    h2::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 4px;
-        background: linear-gradient(90deg, #3498db, #2980b9);
-        border-radius: 2px;
-    }
-
-    p {
-        color: #555;
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
-
-    .paragraphs {
-        text-align: left;
-        margin: 1.5rem 0;
-        padding: 0 1rem;
-    }
-
-    .paragraphs strong {
-        color: #2c3e50;
-        font-weight: 600;
-    }
-
-    /* Development notice */
-    .notice {
-        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-        color: #856404;
-        text-align: center;
-        padding: 1.5rem;
-        border: 2px solid #ffc107;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        font-weight: 600;
-        box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.02); }
-        100% { transform: scale(1); }
-    }
-
-    .icons {
-        width: 45px;
-        height: 45px;
-        margin-right: 15px;
-        vertical-align: middle;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    }
-
-    /* Contact section styling */
-    .contact-info {
-        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 5px solid #2196f3;
-    }
-
-    .contact-info h3 {
-        color: #1976d2;
-        margin-bottom: 1rem;
-    }
-
-    .contact-info p {
-        margin: 0.5rem 0;
-        font-size: 1.1rem;
-    }
-
-    /* Support section */
-    .support-section {
-        background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        text-align: center;
-        border-left: 5px solid #9c27b0;
-    }
-
-    .gcash {
-        text-align: center;
-        margin: 2rem 0;
-    }
-
-    .gcash img {
-        width: 250px;
-        height: auto;
-        border: 3px solid #ddd;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
-    }
-
-    .gcash img:hover {
-        transform: scale(1.05);
-    }
-
-    /* Tips styling */
-    .tip-card {
-        background: white;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        border-radius: 10px;
-        border-left: 5px solid #27ae60;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-    .tip-card:hover {
-        transform: translateX(10px);
-    }
-
-    .tip-card strong {
-        color: #27ae60;
-        font-size: 1.2rem;
-    }
-
-    /* Scroll to top button */
-    .scroll-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: linear-gradient(135deg, #3498db, #2980b9);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
-        transition: all 0.3s ease;
-        z-index: 1000;
-        display: none;
-    }
-
-    .scroll-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 25px rgba(52, 152, 219, 0.6);
-    }
-
-    /* Progress indicator */
-    .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 4px;
-        background: linear-gradient(90deg, #3498db, #2980b9);
-        z-index: 2000;
-        transition: width 0.3s ease;
-    }
-
-    /* Responsive design */
-    @media screen and (max-width: 768px) {
-        .header {
-            padding: 1rem;
-        }
-
-        .header h1 {
-            font-size: 1.5rem;
-        }
-
-        .logo {
-            width: 45px;
-            height: 45px;
-        }
-
-        .main-content {
-            margin: 1rem;
-            padding: 1rem;
-        }
-
-        section {
-            padding: 2rem 1rem;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-        }
-
-        .menu-btn {
-            padding: 10px 15px;
-            font-size: 1.2rem;
-        }
-
-        .gcash img {
-            width: 200px;
-        }
-
-        .scroll-top {
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .main-content {
-            margin: 0.5rem;
-            padding: 0.5rem;
-        }
-
-        section {
-            padding: 1.5rem 0.5rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .paragraphs {
-            padding: 0 0.5rem;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
-        }
-    }
-</style>
 </head>
 <body>
 
@@ -447,7 +36,7 @@
     <a href="#tips" onclick="closeSidebar()">💡 Tips & Strategies</a>
     <div class="dropdown-btn">📚 Lessons ▼</div>
     <div class="dropdown-container">
-        <a href="#lesson1" onclick="closeSidebar()">📖 Lesson 1</a>
+        <a href="#lesson1" onclick="closeSidebar()">📖 Understanding the Civil Service Exam</a>
         <a href="#lesson2" onclick="closeSidebar()">📖 Lesson 2</a>
         <a href="#lesson3" onclick="closeSidebar()">📖 Lesson 3</a>
     </div>
@@ -559,8 +148,130 @@
     </section>
 
     <section id="lesson1">
-        <h2>📖 Lesson 1</h2>
-        <p>This is the first lesson.</p>
+        <h2>📖 Lesson 1: Understanding the Civil Service Exam</h2>
+        
+        <div class="tip-card">
+            <p><strong>What is the Civil Service Exam?</strong></p>
+            <p>The Career Service Examination, Pen and Paper Test (CSE-PPT) is a nationwide competitive examination conducted by the Civil Service Commission (CSC) to establish a Register of Eligibles (RoE) from which certification and appointment to first and second level positions in the civil service shall be made, provided the eligibles meet the qualifications and other requirements of the positions.</p>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Qualification Requirements:</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Filipino citizen</li>
+                <li>At least 18 years old on the date of filing of application</li>
+                <li>Of good moral character</li>
+                <li>Has not been convicted by final judgment of an offense or crime involving moral turpitude, or disgraceful or immoral conduct, dishonesty, examination irregularity, drunkenness, or addiction to drugs</li>
+                <li>Has not been dishonorably discharged from military service or dismissed for cause from any civilian position in the government</li>
+                <li>Has not taken the same level of examination within three (3) months before the date of examination</li>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Two Types of Civil Service Examinations:</strong></p>
+            
+            <p><strong>1. Subprofessional Level (CSE-PPT)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Results in Career Service SubProfessional Eligibility</li>
+                <li>Appropriate only for first level (clerical) positions</li>
+                <li>Includes Clerical Ability</li>
+            </ul>
+
+            <p><strong>2. Professional Level (CSE-PPT)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Results in Career Service Professional Eligibility</li>
+                <li>Appropriate for first level (clerical) and second level (technical) positions</li>
+                <li>More comprehensive with Analytical Ability section</li>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Exam Structure and Scope:</strong></p>
+            <p>Both Professional and Subprofessional levels consist of four main areas:</p>
+            
+            <p><strong>1. Verbal Ability (in English and Filipino)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Word meaning</li>
+                <li>Sentence completion</li>
+                <li>Error recognition</li>
+                <li>Sentence structure</li>
+                <li>Paragraph organization</li>
+                <li>Reading comprehension</li>
+            </ul>
+
+            <p><strong>2. Numerical Ability (in English)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Basic operations</li>
+                <li>Number sequence</li>
+                <li>Word problems</li>
+            </ul>
+
+            <p><strong>3. General Information (in English)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Philippine Constitution</li>
+                <li>Code of Conduct and Ethical Standards for Public Officials and Employees (R.A. 6713)</li>
+                <li>Peace and Human Rights Issues and Concepts</li>
+                <li>Environment Management and Protection</li>
+            </ul>
+
+            <p>Professional Level</p>
+            <p><strong>4. Analytical Ability (in English)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Word analogy</li>
+                <li>Symbolic logic/abstract reasoning</li>
+                <li>Identifying assumptions and drawing conclusions</li>
+                <li>Data interpretation</li>
+            </ul>
+
+            <p>Subprofessional</p>
+            <p><strong>4. Clerical Ability (in English)</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Filing</li>
+                <li>Spelling</li>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Important Exam Information:</strong></p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li><strong>Passing Grade:</strong> General rating of at least 80.00</li>
+                <li><strong>No. of Test Items</strong>
+                    <ul>
+                        <li>Professional Level: 170</li>
+                        <li>SubProfessional Level: 165</li>
+                    </ul>
+                </li>
+                <li><strong>Time limit</strong>
+                    <ul>
+                        <li>Professioinal: 3 hours, 10 minutes</li>
+                        <li>SubProfessional: 2 hours, 40 minutes</li>
+                    </ul>
+                </li>
+                <li><strong>No Calculators:</strong> Use of calculator or any other form of aid is NOT ALLOWED</li>
+                <li><strong>Test Booklet:</strong> Bringing the test booklet outside the testing room is STRICTLY PROHIBITED</li>
+                <li><strong>Multiple Choice:</strong> All questions are multiple choice</li>
+                <li><strong>No Negative Marking:</strong> Wrong answers don't deduct points</li>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <p><strong>Why Focus on Numerical Ability?</strong></p>
+            <p>Numerical Ability is often considered challenging because:</p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>It requires both speed and accuracy without calculator use</li>
+                <li>Many test-takers struggle with mental math under time pressure</li>
+                <li>Word problems require careful reading and logical thinking</li>
+                <li>It's a skill that can be significantly improved with practice</li>
+                <li>Strong numerical skills can boost your overall score significantly</li>
+            </ul>
+        </div>
+
+        <div class="contact-info">
+            <h3>💡 Key Takeaway</h3>
+            <p>Understanding the exam structure is your first step to success. The CSE-PPT is not just about knowledge—it's about strategy, time management, and consistent practice. Focus on your weakest areas while maintaining your strengths, and remember that you need a general rating of at least 80.00 to pass. The exam tests your ability to think quickly and accurately without external aids.</p>
+            <p><strong>Source:</strong> <a href="https://www.csc.gov.ph/phocadownload/userupload/erpo/announcements/2025/Examination%20Announcement%20No.%2005%20s.%202025.pdf" target="_blank">CSC Examination Announcement No. 05 s. 2025</a></p>
+            <p><strong>Source:</strong> <a href="https://csc.gov.ph/phocadownload/userupload/erpo/announcements/2025/ExamAdvisory14s2025_School%20Assignment%20%20Impt%20Reminders%20for%2010%20Aug%202025%20CSE-PPT.pdf" target="_blank">CSC Examination Advisory No. 14 s. 2025</a></p>
+        </div>
     </section>
 
     <section id="lesson2">
