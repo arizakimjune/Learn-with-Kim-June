@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Test</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+        animation: fadeIn 0.5s ease-in;
+    }
+    /* Header */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+    header {
+        background: #1e40af;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        animation: slideDown 0.5s ease-out;
+    }
+    .topic {
+        background: white;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .topic:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .topic h2 {
+        margin-bottom: 10px;
+        color: #2a4d8f;
+    }
+    .question {
+        margin: 15px 0;
+    }
+    .choices {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .choice {
+        background: #e0e7ff;
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        text-align: center;
+        flex: 1;
+        user-select: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .choice:hover {
+        background: #c7d2fe;
+        transform: scale(1.05);
+    }
+    .choice.selected {
+        background: #4f46e5;
+        color: white;
+        font-weight: bold;
+        transform: scale(1.05);
+    }
+    .check-btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 20px auto;
+        display: block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .check-btn:hover {
+        background: #1e40af;
+        transform: scale(1.05);
+    }
+    .results {
+        display: none; /* Hidden by default */
+        margin-top: 20px;
+        padding: 15px;
+        background: #e7f5e6;
+        color: #2c662d;
+        border: 1px solid #a3d7a5;
+        border-radius: 6px;
+        font-weight: bold;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .results.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .result {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideDown {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Add this at the end of your style block */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        gap: 8px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    header {
+        font-size: 1.4rem;
+        padding: 15px;
+    }
+
+    .topic {
+        margin: 15px 0;
+        padding: 15px;
+    }
+
+    .choices {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center; /* Center the choices */
+    }
+
+    .choice {
+        flex: 0 1 auto; /* Only as wide as needed */
+        min-width: 45px;
+        max-width: 70px;
+        text-align: center;
+        padding: 8px;
+        font-size: 0.95rem;
+    }
+
+    .check-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    #directions {
+        margin: 1rem 0;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .results {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .choice {
+        min-width: 40px;
+        max-width: 60px;
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .check-btn {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1><img src="icons/logo.png" alt="logo" class="logo"> The Mastery Equation</h1>
+</div>
+
+<header>📋 Pre-Test</header>
+
+<div id="directions" style="background:#eef7ff; padding:1rem; border-left:4px solid #007BFF; border-radius:8px; margin:1.5rem;">
+    <strong>Directions:</strong> Choose the correct answer for each question. 
+    After finishing all topics, click the "Check Answers" button to see your score. 
+</div>
+
+<div class="topic" data-topic="Percentages">
+    <h2>Percentages</h2>
+    <div class="question" data-answer="1">
+        <p>1. 12 is 125% of what number?</p>
+        <div class="choices">
+            <div class="choice">9.6</div>
+            <div class="choice">8</div>
+            <div class="choice">8.5</div>
+            <div class="choice">10</div>
+            <div class="choice">8.6</div>
+        </div>
+    </div>
+    <div class="question" data-answer="4">
+        <p>2. What percent of 16 is 40?</p>
+        <div class="choices">
+            <div class="choice">2.5%</div>
+            <div class="choice">2500%</div>
+            <div class="choice">1/4</div>
+            <div class="choice">250%</div>
+            <div class="choice">25%</div>
+        </div>
+    </div>
+    <div class="question" data-answer="3">
+        <p>3. A one fourth percent of a number is 25. What is the number?</p>
+        <div class="choices">
+            <div class="choice">100</div>
+            <div class="choice">1,000</div>
+            <div class="choice">10,000</div>
+            <div class="choice">100,000</div>
+            <div class="choice">10</div>
+        </div>
+    </div>
+</div>
+
+<div class="topic" data-topic="Exponents">
+    <h2>Exponents</h2>
+    <div class="question" data-answer="1">
+        <p>1. 99<sup>0</sup> - (-2)<sup>2</sup> + (-3<sup>2</sup> - (-4)<sup>2</sup> = ?</p>
+        <div class="choices">
+            <div class="choice">-28</div>
+            <div class="choice">-10</div>
+            <div class="choice">-9</div>
+            <div class="choice">13</div>
+            <div class="choice">30</div>
+        </div>
+    </div>
+    <div class="question" data-answer="2">
+        <p>2. (100)<sup>0</sup> + (-4<sup>2</sup>) - 2<sup>2</sup> = ?</p>
+        <div class="choices">
+            <div class="choice">19</div>
+            <div class="choice">-19</div>
+            <div class="choice">13</div>
+            <div class="choice">21</div>
+            <div class="choice">12</div>
+        </div>
+    </div>
+</div>
+
+<div class="topic" data-topic="Geometry">
+    <h2>Geometry</h2>
+    <div class="question" data-answer="1">
+        <p>1. How many sides does a triangle have?</p>
+        <div class="choices">
+            <div class="choice">3</div>
+            <div class="choice">4</div>
+            <div class="choice">5</div>
+            <div class="choice">6</div>
+            <div class="choice">7</div>
+        </div>
+    </div>
+    <div class="question" data-answer="4">
+        <p>2. How many degrees in a right angle?</p>
+        <div class="choices">
+            <div class="choice">30</div>
+            <div class="choice">45</div>
+            <div class="choice">60</div>
+            <div class="choice">90</div>
+            <div class="choice">120</div>
+        </div>
+    </div>
+</div>
+
+<div class="results" id="results"></div>
+
+<button class="check-btn">Check Answers</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Choice selection
+    document.querySelectorAll(".choice").forEach(choice => {
+        choice.addEventListener("click", () => {
+            const siblings = choice.parentElement.querySelectorAll(".choice");
+            siblings.forEach(sib => sib.classList.remove("selected"));
+            choice.classList.add("selected");
+        });
+    });
+
+    // Check button click
+    document.querySelector(".check-btn").addEventListener("click", () => {
+        let totalScore = 0;
+        let totalQuestions = 0;
+        let resultsHTML = "<p><strong>Test Result</strong></p>";
+
+        document.querySelectorAll(".topic").forEach(topic => {
+            let topicScore = 0;
+            let topicQuestions = 0;
+
+            topic.querySelectorAll(".question").forEach(question => {
+                totalQuestions++;
+                topicQuestions++;
+                const correctIndex = parseInt(question.dataset.answer, 10) - 1;
+                const selected = question.querySelector(".choice.selected");
+
+                if (selected) {
+                    const choices = Array.from(selected.parentElement.children);
+                    const selectedIndex = choices.indexOf(selected);
+                    if (selectedIndex === correctIndex) {
+                        totalScore++;
+                        topicScore++;
+                    }
+                }
+            });
+
+            resultsHTML += `<p class="result">${topic.dataset.topic} Score: ${topicScore}/${topicQuestions}</p>`;
+        });
+
+        resultsHTML += `<p class="result">Overall Score: ${totalScore}/${totalQuestions}</p>`;
+        resultsHTML += `<div style="background:#eef7ff; padding:1rem; border-left:4px solid #007BFF; border-radius:8px; margin:1.5rem;">
+        <p>Great effort! 📚 Take extra time to review the topics you found challenging so you can improve before moving on. Every mistake is a step toward mastery!</p>
+        </div>`
+        
+        const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.classList.add("show");
+    });
+});
+</script>
+
+</body>
+</html>

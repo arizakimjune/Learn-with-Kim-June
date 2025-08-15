@@ -255,6 +255,45 @@ p {
     font-size: 1.1rem;
 }
 
+/* Pre-test section styling */
+.pre-test {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 5px solid #ffb300;
+}
+
+.pre-test h3 {
+    color: #e65100;
+    margin-bottom: 1rem;
+}
+
+.pre-test p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Button Styling */
+.pre-test .btn-pretest {
+    display: inline-block;
+    background-color: #ff6f00;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 111, 0, 0.3);
+}
+
+.pre-test .btn-pretest:hover {
+    background-color: #e65100;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(230, 81, 0, 0.4);
+}
+
 /* Support section */
 .support-section {
     background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
