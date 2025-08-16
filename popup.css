@@ -1,0 +1,98 @@
+/* Popup container */
+.popup {
+  position: fixed;
+  top: 20vh;
+  right: 20px;
+  background: linear-gradient(135deg, #0288d1, #26c6da);
+  color: white;
+  padding: 1.2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  z-index: 1000;
+  max-width: 320px;
+  transform: translateY(-10px);
+  text-align: center;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Flexbox for icon + text */
+.popup-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* spacing between icon and text */
+  margin-bottom: 0.8rem;
+}
+
+/* Icon */
+.icons_support {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0; /* prevents shrinking */
+}
+
+/* Text */
+.popup p {
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+  color: white;
+}
+
+/* Button link */
+.popup a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  color: #0288d1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.popup a:hover {
+  background: #f0f0f0;
+  color: #01579b;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 600px) {
+  .popup {
+    z-index: 1000;
+    top: 65px;
+    right: 28%;
+    transform: translateX(50%);
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .popup.show {
+    transform: translateX(50%) translateY(0);
+  }
+
+  .popup-content {
+    justify-content: center; /* center icon + text */
+  }
+
+  .icons_support {
+    width: 24px;
+    height: 24px;
+  }
+
+  .popup a {
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}

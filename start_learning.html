@@ -13,9 +13,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="popup.css">
 <title>Start Learning - The Mastery Equation</title>
 </head>
 <body>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <img src="icons/compassion.png" alt="funding" class="icons_support">
+    <p>Want to keep us going?</p>
+  </div>
+  <a href="start_learning.html#support">Support This Website</a>
+</div>
+
+<script>
+  const popup = document.getElementById("popup");
+
+  function showPopup() {
+    // Show popup
+    popup.classList.add("show");
+
+    // Hide after 10 seconds
+    setTimeout(() => {
+      popup.classList.remove("show");
+
+      // After hiding, wait 30 seconds then show again
+      setTimeout(showPopup, 30000); 
+    }, 8000);
+  }
+
+  // Start the cycle
+  showPopup();
+</script>
+
+
+
 
 <!-- Progress bar -->
 <div class="progress-bar" id="progressBar"></div>
@@ -33,6 +65,7 @@
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" onclick="closeSidebar()">✖ Close</a>
     <a href="#start" onclick="closeSidebar()">🚀 Getting Started</a>
+    <a href="#support" onclick="closeSidebar()">💖 Support This Website</a>
     <a href="#tips" onclick="closeSidebar()">💡 Tips & Strategies</a>
     <a href="#pre-test" onclick="closeSidebar()">📋 Pre-Test</a>
     <div class="dropdown-btn">📚 Lessons ▼</div>
@@ -73,10 +106,10 @@
             <p><strong>In March 2025, I successfully passed the Professional Civil Service Examination, earning a general rating of 92.89 and a remarkable 98.95 in Numerical Reasoning.</strong></p>
             <p>My journey taught me the value of smart preparation, consistency, and effective study strategies — lessons I now share through this website.</p>
             <p>I created this platform to help others overcome exam anxiety, master difficult topics, and approach the Civil Service Exam with confidence.</p>
-            <p>Here, I share my personal techniques, study schedules, and strategies that helped me achieve my score — so you can adapt them to your own learning style.</p>
+            <p>Here, I share my personal techniques, and strategies that helped me achieve my score — so you can adapt them to your own learning style.</p>
         </div>
 
-        <div class="contact-info">
+        <div class="contact-info" id="support">
             <h3><img src="icons/email.png" alt="email" class="icons"> Contact Me</h3>
             <p><strong>Email:</strong>
                 <a href="mailto:arizakimjune.evsudc@gmail.com?subject=The_Mastery_Equation Inquiry&body=Hello, I’d like to ask about...">

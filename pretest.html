@@ -12,6 +12,7 @@
         </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="popup.css">
 <title>Pre-Test</title>
 <style>
     body {
@@ -29,7 +30,7 @@
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,6 +118,7 @@
         color: white;
         border: none;
         padding: 12px 20px;
+        min-width: 200px;
         font-size: 1rem;
         border-radius: 8px;
         cursor: pointer;
@@ -128,11 +130,12 @@
         background: #1e40af;
         transform: scale(1.05);
     }
-    .back-btn{
-        background: linear-gradient(135deg, #90A4AE, #607D8B);
+    .back-btn {
+        background: #6b7280;
         color: white;
         border: none;
         padding: 12px 20px;
+        min-width: 200px;
         font-size: 1rem;
         border-radius: 8px;
         cursor: pointer;
@@ -141,7 +144,7 @@
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
     .back-btn:hover {
-        background: linear-gradient(135deg, #B0BEC5, #78909C);
+        background: #374151;
         transform: scale(1.05);
     }
     .results {
@@ -305,9 +308,38 @@
     width: 100%;
   }
 }
+
 </style>
 </head>
 <body>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <img src="icons/compassion.png" alt="funding" class="icons_support">
+    <p>Want to keep us going?</p>
+  </div>
+  <a href="start_learning.html#support">Support This Website</a>
+</div>
+
+<script>
+  const popup = document.getElementById("popup");
+
+  function showPopup() {
+    // Show popup
+    popup.classList.add("show");
+
+    // Hide after 10 seconds
+    setTimeout(() => {
+      popup.classList.remove("show");
+
+      // After hiding, wait 30 seconds then show again
+      setTimeout(showPopup, 30000); 
+    }, 8000);
+  }
+
+  // Start the cycle
+  showPopup();
+</script>
 
 <div class="header">
     <h1><img src="icons/logo.png" alt="logo" class="logo"> The Mastery Equation</h1>
@@ -700,7 +732,8 @@
 <div class="results" id="results"></div>
 
 <button class="check-btn">Check Answers</button>
-<button class="back-btn">Go Back</button>
+<button class="back-btn" onclick="location.href='start_learning.html#pre-test'">Go Back</button>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
