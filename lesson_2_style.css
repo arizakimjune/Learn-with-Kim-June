@@ -1,0 +1,100 @@
+.example-card {
+  background: #f9fafb;
+  border-left: 5px solid #2563eb;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.example-card h3 { color: #2563eb; margin-bottom: 0.5rem; }
+.example-card .math { font-size: 1.2rem; font-weight: bold; color: #111827; margin: 0.5rem 0 1rem; }
+.example-card ol { margin-left: 1.2rem; color: #374151; }
+.example-card li { margin: 0.5rem 0; line-height: 1.5; }
+
+.step {
+  background: #e0f2fe;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #0c4a6e;
+}
+.answer {
+  background: #dcfce7;
+  color: #166534;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+.why {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+  color: #6b7280; /* gray-500 */
+}
+/* Practice Test (same as Pre-test colors) */
+.practice-test {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 5px solid #ffb300;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+
+
+.practice-test h3 {
+    color: #e65100;
+    margin-bottom: 0.5rem;
+    flex: 1 1 100%;
+}
+
+.practice-test p,
+.practice-test ol {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    flex: 1 1 100%;
+}
+
+.practice-test details summary {
+    cursor: pointer;
+    color: #e65100;
+    font-weight: bold;
+    margin-top: 0.3rem;
+}
+.math {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .choices {
+        margin: 10px 0;
+    }
+    .choices button {
+        background: #ffcc80;
+        border: none;
+        padding: 10px 15px;
+        margin: 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        flex: 1 1 100px; /* makes all buttons same width */
+        min-width: 100px; /* uniform width */
+        text-align: center;
+    }
+    .choices button:hover {
+        background: #ffb300;
+        color: #fff;
+    }
+    .feedback {
+        margin-top: 8px;
+        font-weight: bold;
+    }
+    .correct {
+        color: green;
+    }
+    .incorrect {
+        color: red;
+    }

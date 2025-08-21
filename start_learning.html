@@ -14,6 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="popup.css">
+<link rel="stylesheet" href="lesson_2_style.css">
 <title>Start Learning - The Mastery Equation</title>
 </head>
 <body>
@@ -70,8 +71,8 @@
     <a href="#pre-test" onclick="closeSidebar()">📋 Pre-Test</a>
     <div class="dropdown-btn">📚 Lessons ▼</div>
     <div class="dropdown-container">
-        <a href="#lesson1" onclick="closeSidebar()">📖 Understanding the Civil Service Exam</a>
-        <a href="#lesson2" onclick="closeSidebar()">📖 Lesson 2</a>
+        <a href="#lesson1" onclick="closeSidebar()">📖 Lesson 1: Understanding the Civil Service Exam</a>
+        <a href="#lesson2" onclick="closeSidebar()">📖 Lesson 2: Basic Arithmetic Operations</a>
         <a href="#lesson3" onclick="closeSidebar()">📖 Lesson 3</a>
     </div>
     <a href="#practice" onclick="closeSidebar()">✏️ Practice</a>
@@ -322,8 +323,232 @@
     </section>
 
     <section id="lesson2">
-        <h2>📖 Lesson 2</h2>
-        <p>This is the second lesson.</p>
+        <h2>📖 Lesson 2: Basic Arithmetic Operations</h2>
+        
+        <div class="tip-card">
+            <p><strong>PEMDAS</strong></p>
+            <p>
+                When solving math problems with many operations, we follow a special order called 
+                <strong>PEMDAS</strong>. This rule makes sure everyone solves expressions the same way and gets the correct answer.
+            </p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li><strong>P – Parentheses</strong>: Always solve       inside parentheses first. If there are <em>nested parentheses</em> (parentheses inside parentheses), work from the innermost part outward.</li>
+                <li><strong>E – Exponents</strong>: Next, calculate powers or squares (like 2² or 3³).</li>
+                <li><strong>M | D – Multiplication and Division</strong>: Then multiply or divide, moving from left to right.</li>
+                <li><strong>A | S – Addition and Subtraction</strong>: Lastly, add or subtract, also from left to right.</li>
+            </ul>
+        </div>
+        <!-- Example 1 -->
+        <div class="example-card">
+            <h3>✅ Example 1: Expression with All Operations</h3>
+            <p class="math">6 + 2<sup>2</sup> × (8 ÷ 4) - 3</p>
+            <ol>
+                <li>
+                <strong>Parentheses:</strong> 8 ÷ 4 = 2 → 
+                <span class="step">6 + 2<sup>2</sup> × 2 - 3</span>
+                <small class="why">Why: Solve what’s inside parentheses first.</small>
+                </li>
+                <li>
+                <strong>Exponents:</strong> 2<sup>2</sup> = 4 → 
+                <span class="step">6 + 4 × 2 - 3</span>
+                <small class="why">Why: Exponents come before × and ÷.</small>
+                </li>
+                <li>
+                <strong>Multiplication:</strong> 4 × 2 = 8 → 
+                <span class="step">6 + 8 - 3</span>
+                <small class="why">Why: Multiply/divide before add/subtract.</small>
+                </li>
+                <li>
+                <strong>Add & Subtract (left → right):</strong> 6 + 8 = 14; 14 − 3 = 
+                <span class="answer">11</span>
+                <small class="why">Why: After × and ÷, do + and − from left to right.</small>
+                </li>
+            </ol>
+        </div>
+
+            <!-- Example 2 -->
+        <div class="example-card">
+            <h3>✅ Example 2: Nested Parentheses</h3>
+            <p class="math">2 × ( 5 + (3 + 2<sup>2</sup>) )</p>
+            <ol>
+                <li>
+                <strong>Innermost part:</strong> 2<sup>2</sup> = 4 → 
+                <span class="step">2 × ( 5 + (3 + 4) )</span>
+                <small class="why">Why: Work from the most inside outward.</small>
+                </li>
+                <li>
+                <strong>Inner parentheses:</strong> 3 + 4 = 7 → 
+                <span class="step">2 × ( 5 + 7 )</span>
+                <small class="why">Why: Finish the inner group before the outer group.</small>
+                </li>
+                <li>
+                <strong>Outer parentheses:</strong> 5 + 7 = 12 → 
+                <span class="step">2 × 12</span>
+                <small class="why">Why: Now resolve the remaining parentheses.</small>
+                </li>
+                <li>
+                <strong>Multiplication:</strong> 2 × 12 = 
+                <span class="answer">24</span>
+                <small class="why">Why: Multiply after parentheses are simplified.</small>
+                </li>
+            </ol>
+        </div>
+    <!-- PEMDAS Practice Test -->
+        <div class="practice-test">
+            <h3>📝 Practice Test: PEMDAS</h3>
+            <p>Try solving these expressions step by step. Use <strong>PEMDAS</strong> to check your understanding!</p>
+            <ol>
+                <li>
+                    <p class="math">8 + 3 × (6 − 2)</p>
+                    <details>
+                        <summary><strong>Show Answer</strong></summary>
+                        <ol>
+                            <li><strong>Parentheses:</strong> 6 − 2 = 4 → <span class="step">8 + 3 × 4</span></li>
+                            <li><strong>Multiplication:</strong> 3 × 4 = 12 → <span class="step">8 + 12</span></li>
+                            <li><strong>Addition:</strong> 8 + 12 = <span class="answer">20</span></li>
+                        </ol>
+                    </details>
+                </li>
+                <li>
+                    <p class="math">(10 − 4)² ÷ 2</p>
+                    <details>
+                        <summary><strong>Show Answer</strong></summary>
+                        <ol>
+                            <li><strong>Parentheses:</strong> 10 − 4 = 6 → <span class="step">(6)² ÷ 2</span></li>
+                            <li><strong>Exponents:</strong> 6² = 36 → <span class="step">36 ÷ 2</span></li>
+                            <li><strong>Division:</strong> 36 ÷ 2 = <span class="answer">18</span></li>
+                        </ol>
+                    </details>
+                </li>
+                <li>
+                    <p class="math">15 − 6 ÷ 3 + 2 × 4</p>
+                    <details>
+                        <summary><strong>Show Answer</strong></summary>
+                        <ol>
+                            <li><strong>Division:</strong> 6 ÷ 3 = 2 → <span class="step">15 − 2 + 2 × 4</span></li>
+                            <li><strong>Multiplication:</strong> 2 × 4 = 8 → <span class="step">15 − 2 + 8</span></li>
+                            <li><strong>Addition & Subtraction (left → right):</strong> 15 − 2 = 13 → 13 + 8 = <span class="answer">21</span></li>
+                        </ol>
+                    </details>
+                </li>
+            </ol>
+        </div>
+            <div class="tip-card">
+            <p><strong>Fast Mental Math (Tips)</strong></p>
+            <p>Mental math means solving math problems in your head without writing them down. In the Civil Service Exam, speed matters.  Focus on shortcuts to save time.
+            </p>
+            <ul style="margin-left: 20px; color: #555;">
+                <li><strong>Addition:</strong> Break numbers apart to make adding easier.<br/> 
+                    Example: 46 + 37 <br>
+                    → Split them: 46 = 40 + 6, and 37 = 30 + 7 <br>
+                    → Add the tens: 40 + 30 = 70 <br>
+                    → Add the ones: 6 + 7 = 13 <br>
+                    → Combine: 70 + 13 = <strong>83</strong> <br>
+                    This step-by-step method helps reduce mistakes and makes solving faster in your head.</li><br>
+                <li><strong>Multiplying by 10, 100, or 1000:</strong>    Simply add zeros to the number depending on how many zeros the multiplier has.<br/> 
+                    → Example 1: 47 × 10 → just add one zero → <strong>470</strong><br>
+                    → Example 2: 53 × 100 → add two zeros → <strong>5300</strong><br>
+                    → Example 3: 89 × 1000 → add three zeros → <strong>89000</strong><br>
+                    This shortcut saves time and avoids unnecessary long multiplication.</li><br>
+                <li><strong>Dividing by 10, 100, or 1000:</strong> Move the decimal point to the left depending on how many zeros the divisor has.<br/> 
+                    → Example 1: 470 ÷ 10 → move decimal 1 place left → <strong>47</strong><br>
+                    → Example 2: 5300 ÷ 100 → move decimal 2 places left → <strong>53</strong><br>
+                    → Example 3: 89000 ÷ 1000 → move decimal 3 places left → <strong>89</strong><br>
+                    This trick helps you solve division problems quickly without writing long solutions.</li><br>
+                <li><strong>Multiplying by 5:</strong> Multiply by 10, then divide by 2.<br/>
+                    Example: 46 × 5 <br/>
+                    → Multiply by ten: 46 × 10 = 460 <br>
+                    → Divide by two: 460 &divide; 2 = 230</li><br>
+                <li><strong>Multiplying by 9:</strong> Multiply by 10, then subtract the number once. <br>
+                    Example: 37 × 9<br>
+                    → Multiply by ten: 37 &times; 10 = 370 <br>
+                    → Subtract the number once: 370 - 37 = 333</li><br>
+                <li><strong>Division by 5:</strong> Double the number, then divide by 10.<br>
+                    Example: 135 ÷ 5<br>
+                    → Double the number: 270 <br>
+                    → Divide by ten: 27</li>
+            </ul>
+        </div>
+        <div class="practice-test">
+            <h3>🧠 Practice Test: Mental Math</h3>
+            <p>Solve quickly in your head. Choose the correct answer:</p>
+            <ol>
+                <!-- Question 1 -->
+                <li>
+                    <p class="math"> 68 + 47 = ?</p>
+                    <div class="choices">
+                        <button onclick="checkAnswer(this, 115)">115</button>
+                        <button onclick="checkAnswer(this, 115)">116</button>
+                        <button onclick="checkAnswer(this, 115)">117</button>
+                        <button onclick="checkAnswer(this, 115)">118</button>
+                        <button onclick="checkAnswer(this, 115)">119</button>
+                    </div>
+                    <div class="feedback"></div>
+                </li>
+                <!-- Question 2 -->
+                <li>
+                    <p class="math"> 120 ÷ 10 = ?</p>
+                    <div class="choices">
+                        <button onclick="checkAnswer(this, 12)">10</button>
+                        <button onclick="checkAnswer(this, 12)">20</button>
+                        <button onclick="checkAnswer(this, 12)">12</button>
+                        <button onclick="checkAnswer(this, 12)">15</button>
+                        <button onclick="checkAnswer(this, 12)">30</button>
+                    </div>
+                    <div class="feedback"></div>
+                </li>
+                <!-- Question 3 -->
+                <li>
+                    <p class="math"> 53 &times; 100 = ?</p>
+                    <div class="choices">
+                        <button onclick="checkAnswer(this, 5,300)">530</button>
+                        <button onclick="checkAnswer(this, 5,300)">5,300</button>
+                        <button onclick="checkAnswer(this, 5,300)">53,000</button>
+                        <button onclick="checkAnswer(this, 5,300)">530,000</button>
+                        <button onclick="checkAnswer(this, 5,300)">3,500</button>
+                    </div>
+                    <div class="feedback"></div>
+                </li>
+                <!-- Question 4 -->
+                <li>
+                    <p class="math"> 15 × 5 = ?</p>
+                    <div class="choices">
+                        <button onclick="checkAnswer(this, 75)">70</button>
+                        <button onclick="checkAnswer(this, 75)">65</button>
+                        <button onclick="checkAnswer(this, 75)">75</button>
+                        <button onclick="checkAnswer(this, 75)">85</button>
+                        <button onclick="checkAnswer(this, 75)">55</button>
+                    </div>
+                    <div class="feedback"></div>
+                </li>
+                <!-- Question 5 -->
+                <li>
+                    <p class="math"> 64 &times; 9 = ?</p>
+                    <div class="choices">
+                        <button onclick="checkAnswer(this, 576)">606</button>
+                        <button onclick="checkAnswer(this, 576)">596</button>
+                        <button onclick="checkAnswer(this, 576)">574</button>
+                        <button onclick="checkAnswer(this, 576)">566</button>
+                        <button onclick="checkAnswer(this, 576)">576</button>
+                    </div>
+                    <div class="feedback"></div>
+                </li>
+            </ol>
+        </div>
+
+        <script>
+        function checkAnswer(button, correctAnswer) {
+            const feedback = button.closest("li").querySelector(".feedback");
+            const chosen = parseInt(button.textContent);
+            if (chosen === correctAnswer) {
+                feedback.textContent = "✅ Correct!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "❌ Incorrect!";
+                feedback.className = "feedback incorrect";
+            }
+        }
+        </script>
     </section>
 
     <section id="lesson3">
